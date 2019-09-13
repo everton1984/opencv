@@ -22,7 +22,13 @@ typedef Size_MatType Accumulate;
 #define PERF_ACCUMULATE_MASK_INIT(_FLTC) \
     PERF_ACCUMULATE_INIT(_FLTC)          \
     Mat mask(srcSize, CV_8UC1);          \
-    declare.in(mask, WARMUP_RNG);
+    declare.in(mask, WARMUP_RNG);        \
+    for(int i = 0; i < mask.rows; i++){  \
+        for(int j = 0; j < mask.cols; j++) { \
+            mask.at<char>(i,j) = mask.at<char>(i,j) ? 1 : 0; \
+        } \
+    }
+
 
 #define PERF_TEST_P_ACCUMULATE(_NAME, _TYPES, _INIT, _FUN)           \
     PERF_TEST_P(Accumulate, _NAME,                                   \

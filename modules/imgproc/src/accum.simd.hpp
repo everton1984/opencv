@@ -274,13 +274,13 @@ accW_general_( const T* src, AT* dst, const uchar* mask, int len, int cn, double
         dst += (i * cn);
         for( ; i < len; i++, src += cn, dst += cn )
         {
-            if( mask[i] )
-            {
+            //if( mask[i] )
+            //{
                 for( int k = 0; k < cn; k++ )
                 {
-                    dst[k] = src[k]*a + dst[k]*b;
+                    dst[k] = (src[k]*a + dst[k]*b)*mask[i];
                 }
-            }
+            //}
         }
     }
 #if CV_AVX && !CV_AVX2
