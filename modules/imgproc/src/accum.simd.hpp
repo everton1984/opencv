@@ -2606,6 +2606,7 @@ void accW_simd_(const uchar* src, float* dst, const uchar* mask, int len, int cn
         for (; x <= size - cVectorWidth; x += cVectorWidth)
         {
             v_uint8 v_src = vx_load(src + x);
+
             v_uint16 v_src0, v_src1;
             v_expand(v_src, v_src0, v_src1);
 

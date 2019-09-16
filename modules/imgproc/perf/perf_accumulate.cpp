@@ -24,7 +24,6 @@ typedef Size_MatType Accumulate;
     Mat mask(srcSize, CV_8UC1);          \
     declare.in(mask, WARMUP_RNG);
 
-
 #define PERF_TEST_P_ACCUMULATE(_NAME, _TYPES, _INIT, _FUN)           \
     PERF_TEST_P(Accumulate, _NAME,                                   \
         testing::Combine(                                            \
